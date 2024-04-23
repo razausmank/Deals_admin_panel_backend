@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DealController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +21,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
+    Route::resource('store', StoreController::class);
 
+    Route::resource('deal', DealController::class);
+    Route::post('/deal/{deal}/publish', [DealController::class, 'publish'])->name('deal.publish');
+    Route::post('/deal/{deal}/unpublish', [DealController::class, 'unpublish'])->name('deal.unpublish');
 
 
 

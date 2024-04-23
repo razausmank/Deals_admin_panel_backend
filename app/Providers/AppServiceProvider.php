@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Deal;
 use App\Models\Page;
+use App\Models\Store;
 use App\Observers\GenericObserver;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
             });
 
             // mode observers
-            // Product::observe(GenericObserver::class);
+            Store::observe(GenericObserver::class);
+            Deal::observe(GenericObserver::class);
+
     }
 }
